@@ -20,7 +20,7 @@
             <li><a href="./?action=listeSalleInfo">Liste des salle</a></li>
             <li></li> 
             <li></li> 
-            <li><a href="./?action=Connecter">Se connecter</a></li>
+            <li><a href="./?action=connection">Se connecter</a></li>
         </ul>
     </nav>
     <div id="bouton">
@@ -40,5 +40,5 @@
             <?php } ?>
         <?php } ?>
     </ul>
-
+    <?php session_start(); ?>
     <div id="corps">

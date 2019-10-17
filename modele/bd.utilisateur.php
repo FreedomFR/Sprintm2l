@@ -5,7 +5,7 @@ function getUtilisateurByNom($mail, $mdp) {
 
     try {
         $cnx = connexionPDO();
-        $req = $cnx->prepare("select * from sallet2 where email = :mail and password=:mdp");
+        $req = $cnx->prepare("select * from mrbs_users where email=:mail and password=:mdp");
         $req->bindValue(':mail', $mail, PDO::PARAM_STR);
         $req->bindValue(':mdp', $mdp, PDO::PARAM_STR);
         $req->execute();
