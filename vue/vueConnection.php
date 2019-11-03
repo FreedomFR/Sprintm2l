@@ -5,7 +5,7 @@
 
     <body>
     <fieldset>
-    <form action="confirmation.php" method="post">
+    <form action="./?action=confirmation" method="post">
     Mail : <input type="text" name="mail">
     <br />
     Mot de passe : <input type="password" name="mdp"><br />

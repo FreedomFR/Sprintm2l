@@ -3,11 +3,9 @@
 for ($i = 0; $i < count($detailSalleInfo); $i++) {
     ?>     
     <div class="card">
-            <a>Nom:</a>
-            <?= $detailSalleInfo[$i]["nomPoste"] ?>
+            <a>Nom : <?= $detailSalleInfo[$i]["nomPoste"] ?></a>
             <br>
-            <a>Ip :</a>
-            <?= $detailSalleInfo[$i]["indIP"] ?>
+            <a>Ip : <?= $detailSalleInfo[$i]["indIP"] ?></a>
             <br>
             </div>
             <?php

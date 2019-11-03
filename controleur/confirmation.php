@@ -2,7 +2,7 @@
 if ( $_SERVER["SCRIPT_FILENAME"] == __FILE__ ){
     $racine="..";
 }
-include_once "$racine/modele/bd.SalleInfo.php";
+include_once "$racine/modele/bd.utilisateur.php";
 
 // recuperation des donnees GET, POST, et SESSION
 $_SESSION['mail'] = $_POST['mail'];

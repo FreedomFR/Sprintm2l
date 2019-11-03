@@ -7,18 +7,13 @@ function getUtilisateurByNom($mail, $mdp) {
         $cnx = connexionPDO();
         $req = $cnx->prepare("select * from mrbs_users where email=:mail and password=:mdp");
         $req->bindValue(':mail', $mail, PDO::PARAM_STR);
-        $req->bindValue(':mdp', $mdp, PDO::PARAM_STR);
         $req->execute();
 
-        $ligne = $req->fetch(PDO::FETCH_ASSOC);
-        while ($ligne) {
-            $resultat[] = $ligne;
-            $ligne = $req->fetch(PDO::FETCH_ASSOC);
+        $resultat = $req->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
         }
-    } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage();
-        die();
-    }
     return $resultat;
 }
 
