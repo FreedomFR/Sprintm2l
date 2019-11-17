@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
-    <?php session_start(); ?>
+
+
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
         <title><?php echo $titre ?></title>
         <style type="text/css">
@@ -10,9 +11,10 @@
             @import url("css/cgu.css");
             @import url("css/corps.css");
         </style>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="css\bootstrap\css\bootstrap.css">
     </head>
     <body>
+    <?php include_once "$racine/modele/bd.utilisateur.php";?>
 
     <nav>
             
@@ -25,7 +27,12 @@
                 <a class="nav-link" href="./?action=listeSalleInfo">Liste des salle</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./?action=connection">Se connecter</a>
+            <?php if(isLoggedOn()){ ?>
+            <li><a href="./?action=profil">Mon Profil</a></li>
+            <?php } 
+            else{ ?>
+            <li><a href="./?action=connection">Connexion</a></li>
+            <?php } ?>
             </li>
         </ul>
     </nav>

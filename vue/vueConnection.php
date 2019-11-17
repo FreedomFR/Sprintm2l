@@ -5,10 +5,10 @@
 
     <body>
     <fieldset>
-    <form action="./?action=confirmation" method="post">
-    Mail : <input type="text" name="mail">
+    <form action="./?action=connection" method="post">
+    Mail : <input type="text" name="email">
     <br />
-    Mot de passe : <input type="password" name="mdp"><br />
+    Mot de passe : <input type="password" name="password"><br />
     <input type="submit" value="Connexion">
     </form>
     </fieldset>
