@@ -22,17 +22,26 @@ function getUtilisateurByNom($email, $password) {
 function login($email, $password) {
     if (!isset($_SESSION)) {
         session_start();
-    }
+    }  
 
     $util = getUtilisateurByMailU($email);
     $mdpBD = $util["password"];
+    $name = $util["name"];
 
     if (trim($mdpBD) == trim(crypt($password, $mdpBD))) {
         // le mot de passe est celui de l'utilisateur dans la base de donnees
         $_SESSION["email"] = $email;
         $_SESSION["password"] = $mdpBD;
+        $_SESSION["name"] = $name;
     }
 }
+function logout() {
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+    unset($_SESSION["email"]);
+    unset($_SESSION["password"]);
+} 
 
 function isLoggedOn() {
     if (!isset($_SESSION)) {
@@ -65,4 +74,36 @@ function isLoggedOn() {
         }
         return $resultat;
     }
+
+    
+
+    function addUtilisateur($email, $password, $name) {
+        try {
+            $cnx = connexionPDO();
+    
+            $mdpUCrypt = crypt($password, "sel");
+            $req = $cnx->prepare("insert into mrbs_users (email, password, name) values(:email,:password,:name)");
+            $req->bindValue(':email', $email, PDO::PARAM_STR);
+            $req->bindValue(':password', $mdpUCrypt, PDO::PARAM_STR);
+            $req->bindValue(':name', $name, PDO::PARAM_STR);
+            
+            $resultat = $req->execute();
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $resultat;
+    }
+
+    function getMailULoggedOn(){
+        if (isLoggedOn()){
+            $ret = $_SESSION["email"];
+        }
+        else {
+            $ret = "";
+        }
+        return $ret;
+            
+    }
+    
 ?>
