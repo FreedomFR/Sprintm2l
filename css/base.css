@@ -54,7 +54,7 @@ body{
     position : absolute;
     left : var(--margeCalc);
     width : var(--largeurPage);
-    background-color : #fff;
+    background-color : rgb(160, 160, 160);
     /*z-index : 1;*/
     box-shadow: 0px 0px 6px #999;
     min-height: 500px;

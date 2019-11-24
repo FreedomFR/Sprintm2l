@@ -5,7 +5,7 @@ function getSalle() {
 
     try {
         $cnx = connexionPDO();
-        $req = $cnx->prepare("select * from sallet2 group by nSalle");
+        $req = $cnx->prepare("select * from sallea group by nSalle");
         $req->execute();
 
         $ligne = $req->fetch(PDO::FETCH_ASSOC);
@@ -24,7 +24,7 @@ function getSalleByIdR($idR) {
 
     try {
         $cnx = connexionPDO();
-        $req = $cnx->prepare("select * from sallet2 where nomSalle=:nomSalle");
+        $req = $cnx->prepare("select * from sallea where nomSalle=:nomSalle");
         $req->bindValue(':nomSalle', $idR, PDO::PARAM_INT);
 
         $req->execute();
@@ -42,8 +42,8 @@ function getSalleByNom($Nom) {
 
     try {
         $cnx = connexionPDO();
-        $req = $cnx->prepare("select * from sallet2 where nSalle=:nSalle");
-        $req->bindValue(':nSalle', $Nom, PDO::PARAM_INT);
+        $req = $cnx->prepare("select * from sallea where nSalle=:nSalle");
+        $req->bindValue(':nSalle', $Nom, PDO::PARAM_STR);
         $req->execute();
 
        $ligne = $req->fetch(PDO::FETCH_ASSOC);
@@ -63,7 +63,7 @@ function getSalleInfo() {
 
     try {
         $cnx = connexionPDO();
-        $req = $cnx->prepare("select * from sallet2 group by nSalle");
+        $req = $cnx->prepare("select * from sallea group by nSalle");
         $req->execute();
 
         $ligne = $req->fetch(PDO::FETCH_ASSOC);
@@ -79,3 +79,22 @@ function getSalleInfo() {
 }
 
 ?>
+
+<!-- 
+    CREATE VIEW sallea
+AS
+SELECT
+    s.nSalle,
+    s.nomSalle,
+    s.nbPoste,
+    p.indIP,
+    p.nPoste,
+    p.nomPoste,
+    p.ad,
+    p.typePoste,
+    p.nbLog
+FROM
+    salle s
+INNER JOIN poste p
+    ON p.nSalle = s.nSalle 
+-->

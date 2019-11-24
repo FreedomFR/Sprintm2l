@@ -35,7 +35,7 @@ div.card{
     float:left;
     padding:10px;
     margin : 10px;
-    background-color : var(--fondC);
+    background-color : rgb(204, 255, 255);
     box-shadow: 1px 1px 4px #bbb;
 }
 div.photoCard>img{

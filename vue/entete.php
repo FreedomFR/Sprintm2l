@@ -28,21 +28,18 @@
                 <a class="nav-link" href="./?action=listeSalleInfo">Liste des salle</a>
             </li>
             <li class="nav-item">
-                <?php if(isLoggedOn()){
-                    $email = getMailULoggedOn();
-                    $util = getUtilisateurByMailU($email);?>
-                    <a href="./?action=profil">Utilisateur : </a>
-                    <?= $util["name"] ?>
+                <?php if(isLoggedOn()){?>
+                    <a class="nav-link" href="./?action=creer">Ajouter un poste</a>   
+                <?php } ?>
+            <li class="nav-item">
+                <?php if(isLoggedOn()){ $email = getMailULoggedOn(); $util = getUtilisateurByMailU($email);?>
+                    <a class="nav-link" href="./?action=profil">Utilisateur :<?= " " .$util["name"] ?> </a>
+                    
                 <?php } 
                     else{ ?>
-                        <a href="./?action=connection">Connexion</a>
+                        <a class="nav-link" href="./?action=connection">Connexion</a>
                 <?php } ?>
             </li>
         </ul>
     </nav>
-    <div id="bouton">
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
     <div id="corps">
