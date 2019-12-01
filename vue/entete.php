@@ -7,8 +7,6 @@
         <title><?php echo $titre ?></title>
         <style type="text/css">
             @import url("css/base.css");
-            @import url("css/form.css");
-            @import url("css/cgu.css");
             @import url("css/corps.css");
         </style>
         <link rel="stylesheet" href="css\bootstrap\css\bootstrap.css">
@@ -22,10 +20,10 @@
         <ul id="menuGeneral">
         <ul class="nav nav-pills nav-fill">
             <li class="nav-item">
-                <a class="nav-link" href="./?action=accueil">Accueil</a>
+                <a class="nav-link" href="./?action=listeSalleInfo">Liste des salle</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./?action=listeSalleInfo">Liste des salle</a>
+                <a class="nav-link" href="./?action=modifier">Modifier poste</a>
             </li>
             <li class="nav-item">
                 <?php if(isLoggedOn()){?>

@@ -10,6 +10,7 @@ function controleurPrincipal($action) {
     $lesActions["profil"] = "monProfil.php";
     $lesActions["deconnexion"] = "deconnexion.php";
     $lesActions["creer"] = "creationPoste.php";
+    $lesActions["modifier"] = "modifierPoste.php";
 
     if (array_key_exists($action, $lesActions)) {
         return $lesActions[$action];

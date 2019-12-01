@@ -19,6 +19,25 @@ function getAllIP() {
     return $resultat;
 }
 
+function getAllPoste() {
+
+    try {
+        $cnx = connexionPDO();
+        $req = $cnx->prepare("SELECT * FROM `poste` ORDER BY `poste`.`nPoste` ASC ");
+        $req->execute();
+
+        $ligne = $req->fetch(PDO::FETCH_ASSOC);
+        while ($ligne) {
+            $resultat[] = $ligne;
+            $ligne = $req->fetch(PDO::FETCH_ASSOC);
+        }
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+    return $resultat;
+}
+
 function getTypePoste() {
 
     try {

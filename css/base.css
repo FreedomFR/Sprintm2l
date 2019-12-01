@@ -26,6 +26,10 @@
     margin:calc((var(--hauteurMenuGene) + var(--margeMenuHaut)) * -1) 0 0; /* negative fixed header height */
 }
 
+html{
+    background-color: cadetblue;
+}
+
 
 body{
     font-family: Arial;
