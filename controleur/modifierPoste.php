@@ -17,7 +17,7 @@ if (isset($_POST["nPoste"]) && isset($_POST["ad"])) {
 
         // enregistrement des donnees
         $nomPosteBDD = getNomPoste($nPoste);
-        $ret = modifPoste($nPoste, $nomPosteBDD, $ad, $indIP, $typePoste, $nSalle, $nbLog);
+        $ret = modifPoste($nPoste, $nomPosteBDD, $ad, $indIP, $typePoste, $nSalle);
         if ($ret) {
             ?>
             <div class="alert alert-success" role="alert">Le poste a été modifier</div>
@@ -31,7 +31,7 @@ if (isset($_POST["nPoste"]) && isset($_POST["ad"])) {
     ?>
     <div class="alert alert-warning" role="alert">Remplir tous les champs</div>
 <?php
-    }
+    }   
 }
 
 // appel des fonctions permettant de recuperer les donnees utiles a l'affichage 
