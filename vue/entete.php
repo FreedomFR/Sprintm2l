@@ -23,7 +23,9 @@
                 <a class="nav-link" href="./?action=listeSalleInfo">Liste des salle</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./?action=modifier">Modifier poste</a>
+                <?php if(isLoggedOn()){?>
+                    <a class="nav-link" href="./?action=modifier">Modifier poste</a>   
+                <?php } ?>
             </li>
             <li class="nav-item">
                 <?php if(isLoggedOn()){?>

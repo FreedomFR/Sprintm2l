@@ -2,18 +2,17 @@
 /* couleur contraste : rgb(238,144,9) */
 
 :root{
-    --largeurPage: 900px;
+    --largeurPage: 1500px;
     --largeurMenuCont : 200px;
     --margeCalc: calc((100% - var(--largeurPage)) / 2);
     --margeMenuHaut : 15px;
-    --hauteurMenuGene:60px;
+    --hauteurMenuGene:50px;
     --coulA1:#5A7694;
     --coulA2:#D7E5ED;
     --coulB1:#566459;
     --coulB2:#90974A;
     --coulC:#CDBCA0;
     --fondC:#fcfbfb;
-    --padding_cote:5px;
 }
 
 
@@ -26,8 +25,16 @@
     margin:calc((var(--hauteurMenuGene) + var(--margeMenuHaut)) * -1) 0 0; /* negative fixed header height */
 }
 
+h1,h2,h3,h4 {
+    font-family: Futura;	
+}
+
 html{
-    background-color: cadetblue;
+    background-image: url(https://www.larutadelsorigens.cat/wallpic/full/6-69581_wallpapers-4k-desktop-background-abstract.jpg);
+    height: 120%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 
@@ -40,9 +47,6 @@ body{
     background-color : var(--fondC);
 }
 
-#logo {
-    text-align : center;
-}
 
 #corps, #menuContextuel, #menuGeneral  {
     /*animation*/
@@ -140,10 +144,6 @@ nav {
     background-color : rgba(255,255,255,0.1);
 }
 
-#logo>a>img{
-    position : relative;
-    top : -10px;
-}
 
 #menuGeneral>li>a{
     height : var(--hauteurMenuGene);
@@ -157,9 +157,6 @@ nav {
 }
 
 
-#menuGeneral>li>a>img{
-    vertical-align: middle;
-}
 
 #menuContextuel>li>a{
     color:var(--coulA1);
@@ -214,25 +211,6 @@ nav {
     left : calc((100% - var(--largeurPage)) / 2 + 100px);
 }
 
-#accroche{
-    margin-top : 50px;
-    margin-bottom : 50px;
-    color : #333;
-    font-size : 14px;
-    text-align: center;
-    font-family: 'Lobster', cursive;
-
-    font-size: 72px;
-    background: linear-gradient(90deg, #FC2500, #C2289F );
-
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-}
-
-a.aimer{
-    text-decoration: none;
-}
 
 #alerte{
     background-color: #FC2500;

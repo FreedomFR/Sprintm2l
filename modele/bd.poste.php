@@ -97,6 +97,41 @@ function addPoste($nPoste, $nomPoste, $ad, $indIP, $typePoste, $nSalle, $nbLog) 
     return $resultat;
 }
 
+function modifPoste($nPoste, $ad, $indIP, $typePoste, $nSalle, $nbLog) {
+    try {
+        $cnx = connexionPDO();
+        $req = $cnx->prepare("update poste 
+        set ad = :ad, indIP  = :indIP, typePoste = :typePoste, nSalle = :nSalle, nbLog = :nbLog where nPoste = :nPoste");
+        $req->bindValue(':nPoste', $nPoste, PDO::PARAM_STR);
+        $req->bindValue(':ad', $ad, PDO::PARAM_INT);
+        $req->bindValue(':indIP', $indIP, PDO::PARAM_STR);
+        $req->bindValue(':typePoste', $typePoste, PDO::PARAM_STR);
+        $req->bindValue(':nSalle', $nSalle, PDO::PARAM_STR);
+        $req->bindValue(':nbLog', $nbLog, PDO::PARAM_STR);
+        
+        $resultat = $req->execute();
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+    return $resultat;
+}
+
+function getNomPoste($nPoste){
+    try {
+        $cnx = connexionPDO();
+        $req = $cnx->prepare("select nomPoste from poste where nPoste = :nPoste");
+        $req->bindValue(':nPoste', $nPoste, PDO::PARAM_STR);
+        
+        $resultat = $req->execute();
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+    return $resultat;
+
+}
+
 function getIPDispo($indIP) {
     $resultat = array();
 

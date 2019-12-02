@@ -24,7 +24,7 @@ if (isset($_POST["nPoste"]) && isset($_POST["nomPoste"]) && isset($_POST["ad"]))
             <div class="alert alert-success" role="alert">Le poste a été ajouté</div>
             <?php
         } else {?>
-            <div class="alert alert-warning" role="alert">Le poste a été ajouté</div>
+            <div class="alert alert-warning" role="alert">Le poste n'a pas été ajouté</div>
         <?php
         }
     }

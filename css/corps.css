@@ -1,22 +1,13 @@
 
 div.card{
     position : relative;
-    width:850px;
+    width:1450px;
     height : auto;
     float:left;
     padding:10px;
     margin : 10px;
     background-color : rgb(57, 160, 44);
     box-shadow: 1px 1px 4px #bbb;
-}
-div.photoCard>img{
-    
-    position : relative;
-    top:-10px;
-    left : -10px;
-    max-width : 200px;
-    max-height: 140px;
-    
 }
 
 

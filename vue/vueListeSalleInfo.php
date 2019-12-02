@@ -1,4 +1,4 @@
-    <h1>Liste des salle informatique</h1>
+    <h1>Liste des salless informatique</h1>
 
     <?php
     for ($i = 0; $i < count($listeSalleInfo); $i++) {
