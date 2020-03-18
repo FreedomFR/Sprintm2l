@@ -1,6 +1,6 @@
 <?php
 include "getRacine.php";
-include "$racine/controleur/controleurPrincipal.php";
+include "/controleur/controleurPrincipal.php";
 
 if (isset($_GET["action"])) {
     $action = $_GET["action"];
@@ -10,5 +10,5 @@ else {
 }
 
 $fichier = controleurPrincipal($action);
-include "$racine/controleur/$fichier";
+include "/controleur/$fichier";
 ?>

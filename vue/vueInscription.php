@@ -1,8 +1,4 @@
-<html>
-    <head>
-    <h1>Formulaire d'inscription</h1>
-    </head>
-
+<h1>Formulaire d'inscription</h1>
     <body>
     <fieldset>
     <form action="./?action=inscription" method="post">

@@ -1,10 +1,8 @@
-<html>
-    <head>
-    <h1>Formulaire de création de poste</h1>
-    </head>
-
+<h1>Formulaire de création de poste</h1>
     <body>
-    <fieldset>
+    <div class="card border-success mb-3">
+        <fieldset>
+            <br>
     <form action="./?action=creer" method="post">
     <a>Numéro poste  :</a> <input type="text" name="nPoste">
     <br />
@@ -45,5 +43,6 @@
     <input type="submit" name="valider" value="Enregistrer">
     </form>
     </fieldset>
+    </div>
     </body>
 </html>

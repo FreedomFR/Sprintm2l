@@ -30,8 +30,8 @@ h1,h2,h3,h4 {
 }
 
 html{
-    background-image: url(https://www.larutadelsorigens.cat/wallpic/full/6-69581_wallpapers-4k-desktop-background-abstract.jpg);
-    height: 120%;
+    background-image: url('../image/informatique.jpg');
+    height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -215,3 +215,4 @@ nav {
 #alerte{
     background-color: #FC2500;
 }
+

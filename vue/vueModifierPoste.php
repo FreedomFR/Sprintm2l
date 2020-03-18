@@ -1,10 +1,8 @@
-<html>
-    <head>
-    <h1>Formulaire modification poste</h1>
-    </head>
-
+<h1>Formulaire modification poste</h1>
     <body>
+    <div class="card border-success mb-3">
     <fieldset>
+        <br>
     <form action="./?action=modifier" method="post">
     <a>Selectionner le poste :</a>
     <?php
@@ -50,5 +48,6 @@
     <input type="submit" name="modifier" value="Enregistrer">
     </form>
     </fieldset>
+    </div>
     </body>
 </html>

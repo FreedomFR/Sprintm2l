@@ -42,7 +42,7 @@ function getSalleByNom($Nom) {
 
     try {
         $cnx = connexionPDO();
-        $req = $cnx->prepare("select * from sallea where nSalle=:nSalle");
+        $req = $cnx->prepare("select * from salleb where nSalle=:nSalle");
         $req->bindValue(':nSalle', $Nom, PDO::PARAM_STR);
         $req->execute();
 
@@ -63,7 +63,7 @@ function getSalleInfo() {
 
     try {
         $cnx = connexionPDO();
-        $req = $cnx->prepare("select * from sallea group by nSalle");
+        $req = $cnx->prepare("select * from salleb group by nSalle");
         $req->execute();
 
         $ligne = $req->fetch(PDO::FETCH_ASSOC);

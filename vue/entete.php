@@ -1,22 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-    <head>
-
-
-        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-        <title><?php echo $titre ?></title>
-        <style type="text/css">
-            @import url("css/base.css");
-            @import url("css/corps.css");
-        </style>
-        <link rel="stylesheet" href="css\bootstrap\css\bootstrap.css">
-    </head>
-    <body>
-    <?php include_once "$racine/modele/bd.utilisateur.php";?>
-    <?php include_once "$racine/modele/bd.utilisateur.php";?>
-
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link href="../css/style.css" rel="stylesheet">
+</head>
+<?php include_once "$racine/modele/bd.utilisateur.php";?>
+<div class="container">
+    <div class="card-header card border-dark mb-3">
     <nav>
-            
         <ul id="menuGeneral">
         <ul class="nav nav-pills nav-fill">
             <li class="nav-item">
@@ -42,4 +35,6 @@
             </li>
         </ul>
     </nav>
-    <div id="corps">
+    </div>
+</div>
+    <div class="container">
