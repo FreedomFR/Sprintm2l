@@ -1,4 +1,6 @@
+<div class="bg-info">
 <h1>Formulaire d'inscription</h1>
+</div>
     <body>
     <fieldset>
     <form action="./?action=inscription" method="post">
@@ -12,4 +14,3 @@
     </fieldset>
 
     </body>
-    </html>

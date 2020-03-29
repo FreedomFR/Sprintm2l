@@ -1,4 +1,6 @@
+<div class="bg-info">
 <h1>Formulaire modification poste</h1>
+</div>
     <body>
     <div class="card border-success mb-3">
     <fieldset>
@@ -18,7 +20,7 @@
     <?php
     $result = getAllIP();?>
     <select name='indIP'>"
-    <?php 
+    <?php
     for ($e = 0; $e < count($result); $e++) {   
         echo "<option value=" .$result[$e]['indIP'] . ">" .$result[$e]['indIP'] . "</option>"; }
         echo "</select>"; ?>
@@ -31,7 +33,7 @@
     <select name='typePoste'>
     <?php  
     for ($e = 0; $e < count($type); $e++) {   
-        echo "<option value=" .$type[$e]['typePoste'] . ">" .$type[$e]['typePoste'] . "</option>"; }
+        echo "<option value=" .$type[$e]['typeLP'] . ">" .$type[$e]['typeLP'] . "</option>"; }
         echo "</select>"; ?>    
     <br />
     <br />
@@ -50,4 +52,3 @@
     </fieldset>
     </div>
     </body>
-</html>

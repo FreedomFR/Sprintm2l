@@ -77,7 +77,6 @@ function isLoggedOn() {
         return $resultat;
     }
 
-    
 
     function addUtilisateur($email, $password, $name) {
         try {

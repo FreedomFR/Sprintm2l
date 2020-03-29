@@ -4,7 +4,7 @@ function getAllIP() {
 
     try {
         $cnx = connexionPDO();
-        $req = $cnx->prepare("select * from poste group by indIP");
+        $req = $cnx->prepare("select * from salle group by indIP");
         $req->execute();
 
         $ligne = $req->fetch(PDO::FETCH_ASSOC);
@@ -38,11 +38,42 @@ function getAllPoste() {
     return $resultat;
 }
 
+function getAllPosteSansSalle() {
+    $resultat = [];
+    try {
+        $cnx = connexionPDO();
+        $req = $cnx->prepare("SELECT
+          *
+        FROM
+          poste p
+        WHERE
+          p.nPoste NOT IN(
+        SELECT
+          nPoste
+        FROM
+          salleposte
+        )
+        ORDER BY
+          nPoste ASC");
+        $req->execute();
+
+        $ligne = $req->fetch(PDO::FETCH_ASSOC);
+        while ($ligne) {
+            $resultat[] = $ligne;
+            $ligne = $req->fetch(PDO::FETCH_ASSOC);
+        }
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+    return $resultat;
+}
+
 function getTypePoste() {
 
     try {
         $cnx = connexionPDO();
-        $req = $cnx->prepare("select * from poste group by typePoste");
+        $req = $cnx->prepare("select * from types");
         $req->execute();
 
         $ligne = $req->fetch(PDO::FETCH_ASSOC);
@@ -77,18 +108,32 @@ function getAllSalle() {
     return $resultat;
 }
 
-function addPoste($nPoste, $nomPoste, $ad, $indIP, $typePoste, $nSalle, $nbLog) {
+function addPoste($nPoste,$nomPoste) {
     try {
         $cnx = connexionPDO();
-        $req = $cnx->prepare("insert into poste (nPoste, nomPoste, ad, indIP, typePoste, nSalle, nbLog) values(:nPoste,:nomPoste,:ad,:indIP, :typePoste, :nSalle, :nbLog)");
+        $req = $cnx->prepare("INSERT INTO `poste` (`nPoste`,`nomPoste`) values(:nPoste,:nomPoste)");
         $req->bindValue(':nPoste', $nPoste, PDO::PARAM_STR);
         $req->bindValue(':nomPoste', $nomPoste, PDO::PARAM_STR);
+        
+        $resultat = $req->execute();
+
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+    return $resultat;
+}
+
+function addSallePoste($nPoste, $ad, $indIP, $typePoste, $nSalle) {
+    try {
+        $cnx = connexionPDO();
+        $req = $cnx->prepare("INSERT INTO  salleposte (ad, indIP, typePoste, nSalle, nPoste) value (:ad, :indIP, :typePoste, :nSalle, :nPoste)");
         $req->bindValue(':ad', $ad, PDO::PARAM_INT);
         $req->bindValue(':indIP', $indIP, PDO::PARAM_STR);
         $req->bindValue(':typePoste', $typePoste, PDO::PARAM_STR);
         $req->bindValue(':nSalle', $nSalle, PDO::PARAM_STR);
-        $req->bindValue(':nbLog', $nbLog, PDO::PARAM_STR);
-        
+        $req->bindValue(':nPoste', $nPoste, PDO::PARAM_STR);
+
         $resultat = $req->execute();
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage();
@@ -100,7 +145,7 @@ function addPoste($nPoste, $nomPoste, $ad, $indIP, $typePoste, $nSalle, $nbLog) 
 function modifPoste($nPoste, $ad, $indIP, $typePoste, $nSalle) {
     try {
         $cnx = connexionPDO();
-        $req = $cnx->prepare("update poste set ad = :ad, indIP  = :indIP, typePoste = :typePoste, nSalle = :nSalle, nbLog = 0 where nPoste = :nPoste");      
+        $req = $cnx->prepare("update salleposte set ad = :ad, indIP  = :indIP, typePoste = :typePoste, nSalle = :nSalle where nPoste = :nPoste");
         $req->bindValue(':ad', $ad, PDO::PARAM_INT);
         $req->bindValue(':indIP', $indIP, PDO::PARAM_STR);
         $req->bindValue(':typePoste', $typePoste, PDO::PARAM_STR);

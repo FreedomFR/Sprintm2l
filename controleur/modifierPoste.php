@@ -16,8 +16,8 @@ if (isset($_POST["nPoste"]) && isset($_POST["ad"])) {
         $nbLog = 0;
 
         // enregistrement des donnees
-        $nomPosteBDD = getNomPoste($nPoste);
-        $ret = modifPoste($nPoste, $nomPosteBDD, $ad, $indIP, $typePoste, $nSalle);
+       /* $nomPosteBDD = getNomPoste($nPoste);*/
+        $ret = modifPoste($nPoste, $ad, $indIP, $typePoste, $nSalle);
         if ($ret) {
             ?>
             <div class="alert alert-success" role="alert">Le poste a été modifier</div>

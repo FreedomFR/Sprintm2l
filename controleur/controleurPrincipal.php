@@ -11,6 +11,7 @@ function controleurPrincipal($action) {
     $lesActions["deconnexion"] = "deconnexion.php";
     $lesActions["creer"] = "creationPoste.php";
     $lesActions["modifier"] = "modifierPoste.php";
+    $lesActions["ajouterPosteSalle"] = "ajouterPosteSalle.php";
 
     if (array_key_exists($action, $lesActions)) {
         return $lesActions[$action];

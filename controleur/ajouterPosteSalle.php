@@ -10,32 +10,29 @@ if (isset($_POST["nPoste"])) {
 
     if ($_POST["nPoste"] !== "") {
         $nPoste = $_POST["nPoste"];
-/*        $indIP = $_POST["indIP"];
+        $indIP = $_POST["indIP"];
         $typePoste = $_POST["typePoste"];
         $nSalle = $_POST["nSalle"];
-        $ad = $_POST["ad"];*/
-
-        $nomPoste = 'Poste '. $nPoste;
-        $numPoste = 'P'.$nPoste;
+        $ad = $_POST["ad"];
 
         // enregistrement des donnees
-        $ret = addPoste($numPoste,$nomPoste);
+        $ret = addSallePoste($nPoste, $ad, $indIP, $typePoste, $nSalle);
         if ($ret) {
             ?>
             <div class="alert alert-success" role="alert">Le poste a été ajouté</div>
             <?php
         } else {?>
             <div class="alert alert-warning" role="alert">Le poste n'a pas été ajouté</div>
-        <?php
+            <?php
         }
     }
- else {
-    ?>
-    <div class="alert alert-warning" role="alert">Remplir le champ</div>
-<?php
+    else {
+        ?>
+        <div class="alert alert-warning" role="alert">Remplir le champ</div>
+        <?php
     }
 }
-// appel des fonctions permettant de recuperer les donnees utiles a l'affichage 
+// appel des fonctions permettant de recuperer les donnees utiles a l'affichage
 
 // traitement si necessaire des donnees recuperees
 ;
@@ -43,7 +40,7 @@ if (isset($_POST["nPoste"])) {
 // appel du script de vue qui permet de gerer l'affichage des donnees
 $titre = "Ajout poste";
 include "$racine/vue/entete.php";
-include "$racine/vue/vueCreationPoste.php";
+include "$racine/vue/vueAjouterSallePoste.php";
 include "$racine/vue/pied.php";
 
 ?>

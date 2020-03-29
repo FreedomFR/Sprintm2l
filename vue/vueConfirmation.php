@@ -1,5 +1,6 @@
-
+<div class="bg-info">
 <h1>Mon profil</h1>
+</div>
 <div class="card border-success mb-3">
         <br>
 Mon adresse électronique : <?= $util["email"] ?> <br />

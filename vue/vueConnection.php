@@ -1,4 +1,6 @@
+<div class="bg-info">
 <h1>Formulaire d'identification</h1>
+</div>
 <body>
 <div class="card border-success mb-3">
 <fieldset>
@@ -14,4 +16,3 @@
 </fieldset>
 </div>
 </body>
-</html>
