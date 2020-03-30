@@ -6,3 +6,17 @@ body{
     background-size: cover;
     background-attachment: fixed;
 }
+
+body #listeSalle  {
+    overflow-y:scroll;
+    height: 80%;
+    background-color: #6c757d;
+}
+
+body #listeSalleCard{
+    margin-top: 20px;
+}
+
+div #connexion, #inscription, #modifier, #connecte, #ajouterPoste, #listePoste, #listeSallePoste {
+    margin: 10px;
+}

@@ -19,6 +19,27 @@ function getAllIP() {
     return $resultat;
 }
 
+function getIPSalle($nSalle) {
+
+    try {
+        $cnx = connexionPDO();
+        $req = $cnx->prepare("select * from salle where nSalle = :nSalle group by indIP");
+
+        $req->bindValue(':nSalle', $nSalle, PDO::PARAM_STR);
+        $req->execute();
+
+        $ligne = $req->fetch(PDO::FETCH_ASSOC);
+        while ($ligne) {
+            $resultat[] = $ligne;
+            $ligne = $req->fetch(PDO::FETCH_ASSOC);
+        }
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+    return $resultat;
+}
+
 function getAllPoste() {
 
     try {
@@ -114,7 +135,7 @@ function addPoste($nPoste,$nomPoste) {
         $req = $cnx->prepare("INSERT INTO `poste` (`nPoste`,`nomPoste`) values(:nPoste,:nomPoste)");
         $req->bindValue(':nPoste', $nPoste, PDO::PARAM_STR);
         $req->bindValue(':nomPoste', $nomPoste, PDO::PARAM_STR);
-        
+
         $resultat = $req->execute();
 
     } catch (PDOException $e) {

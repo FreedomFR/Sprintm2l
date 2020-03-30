@@ -77,6 +77,22 @@ function isLoggedOn() {
         return $resultat;
     }
 
+function getRang($email) {
+
+    try {
+        $cnx = connexionPDO();
+        $req = $cnx->prepare("select level from mrbs_users where email=:email");
+        $req->bindValue(':email', $email, PDO::PARAM_STR);
+        $req->execute();
+
+        $resultat = $req->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+    return $resultat;
+}
+
 
     function addUtilisateur($email, $password, $name) {
         try {

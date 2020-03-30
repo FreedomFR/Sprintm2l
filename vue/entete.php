@@ -7,7 +7,14 @@
     <link href="./css/style.css" rel="stylesheet">
     <title><?php echo $titre ?></title>
 </head>
-<?php include_once "$racine/modele/bd.utilisateur.php";?>
+<?php
+    include_once "$racine/modele/bd.utilisateur.php";
+    if(isLoggedOn()){
+        $rang = getRang($_SESSION['email']);
+        $rangLv = $rang['level'];
+    }
+
+?>
 <div class="container">
     <br>
     <div class="card-header bg-dark card border-dark mb-3">
@@ -18,11 +25,11 @@
                 <a class="nav-link" href="./?action=listeSalleInfo">Liste des salle</a>
             </li>
             <li class="nav-item">
-                <?php if(isLoggedOn()){?>
+                <?php if(isLoggedOn() && $rangLv > 1){?>
                     <a class="nav-link" href="./?action=modifier">Modifier poste</a>   
                 <?php } ?>
             </li>
-            <?php if(isLoggedOn()){?>
+            <?php if(isLoggedOn() && $rangLv > 1){?>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Ajouter

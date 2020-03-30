@@ -24,8 +24,8 @@ function getSalleByIdR($idR) {
 
     try {
         $cnx = connexionPDO();
-        $req = $cnx->prepare("select * from salle where nomSalle=:nomSalle");
-        $req->bindValue(':nomSalle', $idR, PDO::PARAM_INT);
+        $req = $cnx->prepare("select nbPoste from salle where nSalle=:nSalle");
+        $req->bindValue(':nSalle', $idR);
 
         $req->execute();
 
@@ -36,6 +36,23 @@ function getSalleByIdR($idR) {
     }
     return $resultat;
 }
+
+/*function getSalleByIdRArray($idR) {
+
+    try {
+        $cnx = connexionPDO();
+        $req = $cnx->prepare("select nPoste from salleposte where nSalle=:nSalle");
+        $req->bindValue(':nSalle', $idR);
+
+        $req->execute();
+
+        $resultat = $req->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+    return $resultat;
+}*/
 
 
 function getSalleByNom($Nom) {
@@ -86,6 +103,29 @@ function getSalleInfo() {
     }
     return $resultat;
 }
+
+/*function syncroSallePoste(){
+    $allSalle = getSalle();
+
+
+    foreach ($allSalle as $salle){
+        $nbPoste = getSalleByIdRArray($salle);
+        try {
+            $cnx = connexionPDO();
+            $req = $cnx->prepare("update salle set nbPoste =:nbPoste where nSalle = :nSalle");
+            $req->bindValue(':nbPoste', $nbPoste['nbPoste']);
+            var_dump($nbPoste);
+            $req->bindValue(':nSalle', $salle['nSalle']);
+
+            $resultat[] = $req->execute();
+
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $resultat;
+    }
+}*/
 
 ?>
 

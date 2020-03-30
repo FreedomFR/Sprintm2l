@@ -38,7 +38,7 @@ if (isset($_POST["nPoste"])) {
 ;
 
 // appel du script de vue qui permet de gerer l'affichage des donnees
-$titre = "Ajout poste";
+$titre = "Ajout poste dans une salle";
 include "$racine/vue/entete.php";
 include "$racine/vue/vueAjouterSallePoste.php";
 include "$racine/vue/pied.php";
