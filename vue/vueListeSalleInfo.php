@@ -18,7 +18,12 @@
                     <div class="col-7">
                         <a> Nombre de poste : <?php
                             $nbPoste = getSalleByNom($listeSalleInfo[$i]['nSalle']);
-                            echo $nbPoste[0]['nbPoste'] ?>
+                            if($nbPoste != null){
+                                echo $nbPoste[0]['nbPoste'] ;
+                            }else{
+                                echo "0";
+                            }
+                           ?>
                         </a>
                         <p class="nav-link"><?php echo "<a href='./?action=detail&nSalle=" . $listeSalleInfo[$i]['nSalle'] . "'>" . "Voir détail" . "</a>";?></p>
                     </div>

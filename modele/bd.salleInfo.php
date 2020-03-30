@@ -56,7 +56,7 @@ function getSalleByIdR($idR) {
 
 
 function getSalleByNom($Nom) {
-
+    $resultat = [];
     try {
         $cnx = connexionPDO();
         $req = $cnx->prepare("SELECT

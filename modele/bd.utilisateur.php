@@ -1,24 +1,6 @@
 <?php
 include_once "bd.inc.php";
 
-function getUtilisateurByNom($email, $password) {
-
-    try {
-        $cnx = connexionPDO();
-        $req = $cnx->prepare("select * from mrbs_users where email=:email and password=:password");
-        $req->bindValue(':email', $email, PDO::PARAM_STR);
-        $req->bindValue(':password', $password, PDO::PARAM_STR);
-        $req->execute();
-
-        $resultat = $req->fetch(PDO::FETCH_ASSOC);
-        
-        } catch (PDOException $e) {
-            print "Erreur !: " . $e->getMessage();
-            die();
-        }
-    return $resultat;
-}
-
 function login($email, $password) {
     if (!isset($_SESSION)) {
         session_start();
@@ -61,21 +43,21 @@ function isLoggedOn() {
     return $ret;
 }
 
-    function getUtilisateurByMailU($email) {
+function getUtilisateurByMailU($email) {
 
-        try {
-            $cnx = connexionPDO();
-            $req = $cnx->prepare("select * from mrbs_users where email=:email");
-            $req->bindValue(':email', $email, PDO::PARAM_STR);
-            $req->execute();
-            
-            $resultat = $req->fetch(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            print "Erreur !: " . $e->getMessage();
-            die();
-        }
-        return $resultat;
+    try {
+        $cnx = connexionPDO();
+        $req = $cnx->prepare("select * from mrbs_users where email=:email");
+        $req->bindValue(':email', $email, PDO::PARAM_STR);
+        $req->execute();
+
+        $resultat = $req->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
     }
+    return $resultat;
+}
 
 function getRang($email) {
 
@@ -94,33 +76,33 @@ function getRang($email) {
 }
 
 
-    function addUtilisateur($email, $password, $name) {
-        try {
-            $cnx = connexionPDO();
-    
-            $mdpUCrypt = crypt($password, "sel");
-            $req = $cnx->prepare("insert into mrbs_users (email, password, name) values(:email,:password,:name)");
-            $req->bindValue(':email', $email, PDO::PARAM_STR);
-            $req->bindValue(':password', $mdpUCrypt, PDO::PARAM_STR);
-            $req->bindValue(':name', $name, PDO::PARAM_STR);
-            
-            $resultat = $req->execute();
-        } catch (PDOException $e) {
-            print "Erreur !: " . $e->getMessage();
-            die();
-        }
-        return $resultat;
-    }
+function addUtilisateur($email, $password, $name) {
+    try {
+        $cnx = connexionPDO();
 
-    function getMailULoggedOn(){
-        if (isLoggedOn()){
-            $ret = $_SESSION["email"];
-        }
-        else {
-            $ret = "";
-        }
-        return $ret;
-            
+        $mdpUCrypt = crypt($password, "sel");
+        $req = $cnx->prepare("insert into mrbs_users (email, password, name) values(:email,:password,:name)");
+        $req->bindValue(':email', $email, PDO::PARAM_STR);
+        $req->bindValue(':password', $mdpUCrypt, PDO::PARAM_STR);
+        $req->bindValue(':name', $name, PDO::PARAM_STR);
+
+        $resultat = $req->execute();
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
     }
+    return $resultat;
+}
+
+function getMailULoggedOn(){
+    if (isLoggedOn()){
+        $ret = $_SESSION["email"];
+    }
+    else {
+        $ret = "";
+    }
+    return $ret;
+
+}
     
 ?>
